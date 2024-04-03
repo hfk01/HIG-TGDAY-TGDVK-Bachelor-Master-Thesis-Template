@@ -23,7 +23,5 @@ It is difficult to adhere to the formatting instructions given by the university
 E.g. "hanging" after a header. Another challenge is the selection of the main font, Perpetua, which is not available (for free, to the best of my knowledge) in LaTeX.
 
 
-*Licence: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)*
-
 
 Keywords: DVA010C DVG800 mall_för_examensarbete_-_ATM.docx skrivhandbok_examensarbete_-_ATM.docx HIG Dataingenjörsprogrammet Datavetenskapliga TGDVK TGDAY
