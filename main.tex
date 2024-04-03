@@ -1,0 +1,231 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%% INFORMATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (Almost complete) Bachelor/Master thesis template for University of Gävle    %
+% Layout design: ATM @ University of Gävle                                     %
+% Latex template maker: Henrik Falk (falkis@gmail.com)                         %
+% Version:       1.0rc1 (2024/04/03)                                           %
+% Licence: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ============================= Preamble ============================
+\documentclass[a4paper, 12pt]{book} % For a book (to correspond to the thesis format)
+\usepackage[utf8]{inputenc} % For correct encoding
+\usepackage[T1]{fontenc} % For correct encoding
+\usepackage{caption} % For customizing captions
+\usepackage{geometry} % For setting margins
+\usepackage{setspace} % For line spacing
+\usepackage{titlesec} % For customizing chapter and section titles
+\usepackage{graphicx} % For images
+\usepackage[swedish,english]{babel} % For Swedish and English languages (must be Swedish before English otherwise TOC becomes innehållsförteckning)
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage{fontspec} % For customizing fonts
+\usepackage{xunicode} % For Unicode support
+\usepackage{xltxtra} % For XeTeX extras
+\usepackage{booktabs} % For professional looking tables
+\usepackage{xparse} % For more flexible command and environment definitions
+\usepackage[printonlyused,nohyperlinks]{acronym} % For list of abbreviations
+\usepackage{mathpazo} % For Baskerville font (check)
+\usepackage{tocloft} % For customizing the Table of Contents
+\usepackage{enumitem} % For customizing lists
+\usepackage{ragged2e} % For better text alignment control
+\usepackage[numbers]{natbib} % For bibliography
+
+\usepackage{subcaption} % For subfigures (just for grading criteria, remove later)
+
+\hypersetup{ % Set up hyperlinks color
+     colorlinks=true,
+     linkcolor=black,
+     filecolor=blue,
+     citecolor = black,      
+     urlcolor=cyan,
+     }
+
+% Custom caption setup for figures
+\DeclareCaptionFormat{custom}{%
+  \fontsize{12}{14.4}\selectfont\itshape% Font size and style
+  \ifdim\linewidth=\textwidth% Condition for single-line caption
+    \centering#1#2#3\par% Centered if it fits in one line
+  \else
+    \RaggedRight#1#2#3\par% Left-aligned otherwise
+  \fi
+}
+\captionsetup[figure]{%
+  format=custom,
+  font={it}, % Italic
+  labelfont={bf}, % Bold label (e.g., Figure 1.)
+  justification=RaggedRight, % Left-aligned multi-line captions
+  singlelinecheck=on, % Center single-line captions
+  skip=12pt, % Space after the caption
+  aboveskip=6pt, % Space before the caption
+}
+
+
+\addto{\extrasenglish}{             % Change bibliography name to "References"
+  \renewcommand{\bibname}{References}
+}
+
+\geometry{left=35mm, right=35mm, top=20mm, bottom=30mm} % Set margins
+\setstretch{1.15}
+
+% Set the main font to Baskerville
+\setmainfont{Baskerville}[SizeFeatures={Size=12}]   % Use your system's Baskerville name
+
+\NewDocumentEnvironment{HiGquote}{}     % Custom block quotation environment
+  {% Before code
+    \quote
+    \itshape
+    \fontsize{12}{14.4}\selectfont      % 12pt font size with "about" single line spacing
+    \setlength{\leftskip}{1cm}          % Indent from the left
+    \setlength{\rightskip}{1.5cm}       % Indent from the right
+    \setstretch{1}                      % Standard line spacing
+  }
+  {% After code
+    \endquote
+  }
+
+\titleformat{\chapter}                  % Customizing chapter titles
+  {\raggedright\fontspec{Verdana}\bfseries\fontsize{14}{12}\selectfont}
+  {\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{12pt}{12pt}
+
+
+\titleformat{\section}                  % Customizing section titles
+  {\raggedright\fontspec{Verdana}\bfseries\fontsize{12}{18}\selectfont}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{18pt}{6pt}
+
+
+\titleformat{\subsection}               % Customizing subsection titles
+  {\raggedright\fontspec{Baskerville}\bfseries\fontsize{13}{12}\selectfont}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+
+\titleformat{\subsubsection}            % Customizing subsubsection titles
+  {\raggedright\fontspec{Baskerville}\bfseries\fontsize{12}{6}\selectfont\underline}
+  {\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{6pt}{6pt}
+
+% Caption setup for tables
+\DeclareCaptionFont{Baskerville}{\fontspec{Baskerville}\itshape}        
+\captionsetup[table]{
+  font={Baskerville, small}, % Baskerville, 12pt, italic
+  labelfont=bf,
+  textfont=it,
+  justification=centering,
+  singlelinecheck=off % Ensures the caption is centered regardless of length
+}
+
+% Customizing the Table of Contents
+\renewcommand{\cftsecfont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For section titles
+\renewcommand{\cftsubsecfont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For subsection titles
+\renewcommand{\cftsubsubsecfont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For subsubsection titles
+
+% Ensure that numbers are also formatted
+\renewcommand{\cftsecpagefont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For section page numbers
+\renewcommand{\cftsubsecpagefont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For subsection page numbers
+\renewcommand{\cftsubsubsecpagefont}{\fontsize{12}{15}\selectfont\fontspec{Baskerville}} % For subsubsection page numbers
+
+
+
+\begin{document}
+% ============================= Front Matter ============================
+\frontmatter % Start front matter
+\pagestyle{plain} % Page numbering style for front matter
+
+
+\begin{titlepage} % Title page
+    \centering
+    \vspace*{1cm}
+    \Large University of Gävle\\[1cm]
+    \Huge \textbf{Title of the Thesis}\\[0.5cm]
+    \LARGE Subtitle (if any)\\[2cm]
+    \Large
+    Author 1\\
+    email@example.com\\[1cm]
+    Author 2\\
+    email@example.com\\[2cm]
+    \today\\[2cm]
+    Thesis for Bachelor's/Master's Degree\\
+    XX Credits\\
+    Program Name\\[2cm]
+    Examiner: Name\\
+    Supervisor: Name
+\end{titlepage}
+
+
+\pagenumbering{roman} % Start page numbering in Roman numerals
+\chapter*{Foreword} % Foreword as a chapter or section
+\label{sec:foreword} % Label for cross-referencing
+\addcontentsline{toc}{chapter}{Foreword} % Add to Table of Contents
+
+\chapter*{Abstract} % Abstract as a chapter or section
+\label{sec:abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{sections/abstract.tex}
+
+
+% List of Abbreviations as a chapter or section
+\chapter*{List of Abbreviations}
+\label{sec:abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\input{sections/acronyms.tex}
+\newpage % New page for the Table of Contents
+
+\tableofcontents % Table of Contents
+
+% ============================= Main Matter ============================
+
+\mainmatter % Start the actual content
+\pagenumbering{arabic} % Start page numbering in Arabic numerals
+
+\chapter{Introduction} % Chapter 1
+\label{sec:introduction} % Label for cross-referencing
+\input{sections/introduction.tex} % Input the content of the introduction
+\cleardoublepage % New page for the next chapter, start on the right side of the book
+
+\chapter{Theory}
+\label{sec:theory}
+\input{sections/theory.tex}
+\cleardoublepage
+
+\chapter{Method}
+\label{sec:method}
+\input{sections/method.tex}
+\cleardoublepage
+
+\chapter{Results}
+\label{sec:results}
+\input{sections/results.tex}
+\cleardoublepage
+
+\chapter{Discussion}
+\label{sec:discussion}
+\input{sections/discussion.tex}
+\cleardoublepage
+
+\chapter{Conclusions}
+\label{sec:conclusions}
+\input{sections/conclusions.tex}
+\cleardoublepage
+
+% ============================= References ============================
+
+\bibliographystyle{IEEEtran} % Use the bibliography style specified in the preamble
+\bibliography{references} % Use the references.bib file
+\addcontentsline{toc}{chapter}{References} % Add the References section to the Table of Contents
+
+% ============================= Appendices ============================
+\appendix % Start appendices
+\chapter*{Appendix A} % Appendix A as a chapter or section without numbering/lettering 
+\label{sec:appendixa} % Label for cross-referencing
+\input{sections/appendixa.tex} % Input the content of the appendix
+\addcontentsline{toc}{chapter}{Appendix A} % Add the Appendix A section to the Table of Contents
+\clearpage % New page for the next appendix
+
+\chapter*{Appendix B}
+\label{sec:appendixb}
+%\input{sections/appendixb.tex}
+\addcontentsline{toc}{chapter}{Appendix B}
+\clearpage
+
+\end{document}
