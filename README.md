@@ -28,10 +28,11 @@ Made with Visual Studio Code, not tested online (E.g. Overleaf).
 ## Tips & Tricks
 When using the template with Visual Studio Code. Always clean auxiliary files when building the document; this will help with problems related to the bibliography.
 
-Keywords: DVA010C DVG800 mall_för_examensarbete_-_ATM.docx skrivhandbok_examensarbete_-_ATM.docx HIG Dataingenjörsprogrammet Datavetenskapliga TGDVK TGDAY
-
 
 ## Document specific commands
 HiGQuote (\begin{HiGquote}) adheres to the rules stipulated in the formatting instructions.
 
 The document is not in class "article" but in "book" so the levels for headings are (in order from biggest to smallest); chapter, section, subsection, subsubsection.
+
+
+*Keywords:* DVA010C DVG800 HiG mall_för_examensarbete_-_ATM.docx skrivhandbok_examensarbete_-_ATM.docx HIG Dataingenjörsprogrammet Datavetenskapliga TGDVK TGDAY Examensarbete dataingenjör datavetenskap
